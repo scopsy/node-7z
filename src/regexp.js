@@ -2,6 +2,15 @@
 // compatibility checks the running Node.js version and apply a polyfill
 // if needed.
 // Support until Jan 2020 (https://github.com/nodejs/Release)
+const RegExp = (() => {
+	try {
+		new RegExp('(?<test>a)')
+		return RegExp
+	} catch (error) {
+		return require('named-regexp-groups')
+	}
+})();
+
 const semver = /v(\d+)\.(\d+)\.(\d+)/
 const nodeVersionResults = process.version.match(semver)
 const nodeVersionMajor = parseInt(nodeVersionResults[1])
