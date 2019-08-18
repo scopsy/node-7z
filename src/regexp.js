@@ -5,9 +5,6 @@
 const semver = /v(\d+)\.(\d+)\.(\d+)/
 const nodeVersionResults = process.version.match(semver)
 const nodeVersionMajor = parseInt(nodeVersionResults[1])
-if (nodeVersionMajor < 10) {
-  require('regexp-polyfill')
-}
 
 const LINE_SPLIT = new RegExp('\n|\r\n|\x08+|\r +\r')
 const BODY_PROGRESS = new RegExp('^ *(?<percent>\\d+)% ?(?<fileCount>\\d+)? ?(?<file>.*)$')
